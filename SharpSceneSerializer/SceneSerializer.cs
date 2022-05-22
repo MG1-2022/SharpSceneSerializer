@@ -8,7 +8,7 @@ namespace SharpSceneSerializer;
 public static class SceneSerializer
 {
     static string SerializeRegex = "(\\\"\\$type\\\":[\\s]*\\\"[^\\\"]*\\\",)";
-    public static bool Serialize(Scene scene, string fileName)
+    public static bool Serialize(Scene scene, string filePath)
     {
         string jsonString = JsonSerializer.Serialize(scene, new JsonSerializerOptions(
             new JsonSerializerOptions(JsonSerializerDefaults.General)
@@ -19,7 +19,9 @@ public static class SceneSerializer
             }));
         Console.WriteLine(SerializeRegex);
         string output = Regex.Replace(jsonString, SerializeRegex, "");
-        Console.WriteLine(output);
+        if (File.Exists(filePath))
+            return false;
+        File.WriteAllText(filePath, output);
         return true;
     }
 }
