@@ -1,4 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
+=======
+﻿<Project Sdk="Microsoft.NET.Sdk">
+>>>>>>> origin/main
 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
@@ -8,6 +11,7 @@
 
     <ItemGroup>
       <PackageReference Include="InterfaceConverter.SystemTextJson" Version="1.1.0" />
+      <PackageReference Include="Newtonsoft.Json.Schema" Version="3.0.15-beta1" />
     </ItemGroup>
 
 </Project>
