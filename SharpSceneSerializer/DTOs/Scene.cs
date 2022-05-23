@@ -5,10 +5,10 @@ namespace SharpSceneSerializer.DTOs;
 
 public class Scene
 {
-    public Scene(List<Point> points = null, List<IGeometryObject> objects = null)
+    public Scene(List<Point> points = null, List<IGeometryObject> geometry = null)
     {
         Points = points;
-        Geometry = objects;
+        Geometry = geometry;
     }
     public List<Point> Points { get; init; }
     public List<IGeometryObject> Geometry { get; init; }

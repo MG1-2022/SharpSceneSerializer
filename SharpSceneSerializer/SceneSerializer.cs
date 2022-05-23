@@ -80,6 +80,6 @@ public static class SceneSerializer
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
             });
 
-        return (false, scene);
+        return (true, scene);
     }
 }
