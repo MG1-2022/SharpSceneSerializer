@@ -21,18 +21,27 @@ public static class SceneSerializer
     static string DeserializeCurveC0Regex = "(\\\"objectType\\\":[\\s]*\\\"bezierC0\\\",)";
     static string DeserializeCurveC2Regex = "(\\\"objectType\\\":[\\s]*\\\"bezierC2\\\",)";
     static string DeserializeInterpolatedC2Regex = "(\\\"objectType\\\":[\\s]*\\\"interpolatedC2\\\",)";
+    static string DeserializePatchC0Regex = "(\\\"objectType\\\":[\\s]*\\\"bezierPatchC0\\\",)";
+    static string DeserializePatchC2Regex = "(\\\"objectType\\\":[\\s]*\\\"bezierPatchC2\\\",)";
+    static string DeserializeSurfaceC0Regex = "(\\\"objectType\\\":[\\s]*\\\"bezierSurfaceC0\\\",)";
+    static string DeserializeSurfaceC2Regex = "(\\\"objectType\\\":[\\s]*\\\"bezierSurfaceC2\\\",)";
 
     private static string torusTypeText =
         "\"$type\":\"SharpSceneSerializer.DTOs.GeometryObjects.Torus\",\"objectType\":\"torus\",";
-
     private static string curveC0TypeText =
         "\"$type\":\"SharpSceneSerializer.DTOs.GeometryObjects.BezierC0\",\"objectType\":\"bezierC0\",";
-
     private static string curveC2TypeText =
         "\"$type\":\"SharpSceneSerializer.DTOs.GeometryObjects.BezierC2\",\"objectType\":\"bezierC2\",";
-
     private static string interpolatedC2TypeText =
         "\"$type\":\"SharpSceneSerializer.DTOs.GeometryObjects.InterpolatedC2\",\"objectType\":\"interpolatedC2\",";
+    private static string bezierPatchC0TypeText =
+        "\"$type\":\"SharpSceneSerializer.DTOs.GeometryObjects.BezierPatchC0\",\"objectType\":\"bezierPatchC0\",";
+    private static string bezierPatchC2TypeText =
+        "\"$type\":\"SharpSceneSerializer.DTOs.GeometryObjects.BezierPatchC2\",\"objectType\":\"bezierPatchC2\",";
+    private static string bezierSurfaceC0TypeText =
+        "\"$type\":\"SharpSceneSerializer.DTOs.GeometryObjects.BezierSurfaceC0\",\"objectType\":\"bezierSurfaceC0\",";
+    private static string bezierSurfaceC2TypeText =
+        "\"$type\":\"SharpSceneSerializer.DTOs.GeometryObjects.BezierSurfaceC2\",\"objectType\":\"bezierSurfaceC2\",";
 
     public static bool Serialize(Scene scene, string filePath)
     {
@@ -71,6 +80,10 @@ public static class SceneSerializer
         jsonFileContent = Regex.Replace(jsonFileContent, DeserializeCurveC0Regex, curveC0TypeText);
         jsonFileContent = Regex.Replace(jsonFileContent, DeserializeCurveC2Regex, curveC2TypeText);
         jsonFileContent = Regex.Replace(jsonFileContent, DeserializeInterpolatedC2Regex, interpolatedC2TypeText);
+        jsonFileContent = Regex.Replace(jsonFileContent, DeserializePatchC0Regex, bezierPatchC0TypeText);
+        jsonFileContent = Regex.Replace(jsonFileContent, DeserializePatchC2Regex, bezierPatchC2TypeText);
+        jsonFileContent = Regex.Replace(jsonFileContent, DeserializeSurfaceC0Regex, bezierSurfaceC0TypeText);
+        jsonFileContent = Regex.Replace(jsonFileContent, DeserializeSurfaceC2Regex, bezierSurfaceC2TypeText);
 
         Scene scene = JsonSerializer.Deserialize<Scene>(jsonFileContent,
             new JsonSerializerOptions(JsonSerializerDefaults.General)

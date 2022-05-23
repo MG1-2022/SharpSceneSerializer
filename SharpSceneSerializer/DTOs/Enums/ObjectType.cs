@@ -15,4 +15,12 @@ public enum ObjectType
     bezierC2 = 2,
     [EnumMember(Value = "interpolatedC2")]
     interpolatedC2 = 3,
+    [EnumMember(Value = "bezierPatchC0")]
+    bezierPatchC0 = 4,
+    [EnumMember(Value = "bezierPatchC2")]
+    bezierPatchC2 = 5,
+    [EnumMember(Value = "bezierSurfaceC0")]
+    bezierSurfaceC0 = 6,
+    [EnumMember(Value = "bezierSurfaceC2")]
+    bezierSurfaceC2 = 7,
 }
