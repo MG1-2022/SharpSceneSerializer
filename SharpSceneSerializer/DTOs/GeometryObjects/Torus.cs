@@ -20,4 +20,8 @@ public class Torus : IGeometryObject
     public Float3 Scale { get; init; }
     [Required]
     public Uint2 Samples { get; init; }
+    [Required][Range(0, float.MaxValue)]
+    public float SmallRadius { get; init; }
+    [Required][Range(0, float.MaxValue)]
+    public float LargeRadius { get; init; }
 }
