@@ -43,7 +43,7 @@ public static class SceneSerializer
     private static string bezierSurfaceC2TypeText =
         "\"$type\":\"SharpSceneSerializer.DTOs.GeometryObjects.BezierSurfaceC2\",\"objectType\":\"bezierSurfaceC2\",";
 
-    public static bool Serialize(Scene scene, string filePath)
+    public static bool Serialize(Scene scene, string filePath, bool overwrite = true)
     {
         string jsonString = JsonSerializer.Serialize(scene, new JsonSerializerOptions(
             new JsonSerializerOptions(JsonSerializerDefaults.General)
@@ -54,7 +54,7 @@ public static class SceneSerializer
             }));
         Console.WriteLine(SerializeRegex);
         string output = Regex.Replace(jsonString, SerializeRegex, "");
-        if (File.Exists(filePath))
+        if (!overwrite && File.Exists(filePath))
             return false;
         File.WriteAllText(filePath, output);
         return true;
